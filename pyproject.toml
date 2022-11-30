@@ -1,0 +1,25 @@
+[tool.poetry]
+name = "nlmyo"
+version = "0.1.0"
+description = ""
+authors = ["Corentin"]
+
+[tool.poetry.dependencies]
+python = ">=3.8, <3.11"
+ipykernel = "^6.18.3"
+pdf2image = "^1.16.0"
+pytesseract = "^0.3.10"
+numpy = "^1.23.5"
+opencv-python-headless = "^4.6.0"
+typer = "^0.7.0"
+rich = "^12.6.0"
+
+[tool.poetry.dev-dependencies]
+mypy = "^0.991"
+pytest = "^7.2.0"
+black = "^22.10.0"
+ruff = "^0.0.149"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
