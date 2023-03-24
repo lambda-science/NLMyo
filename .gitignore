@@ -165,3 +165,4 @@ data/*
 !data/raw/.gitkeep
 !data/processed/.gitkeep
 !data/results/.gitkeep
+db_myocon/*
