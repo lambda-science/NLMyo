@@ -8,12 +8,12 @@
 
 **NLMyo🔧: is a toolbox built to leverage the power of Large Language Models (LLMs) to exploit histology text reports.**  
 Available tools:
-* Anonymizer🕵️: a simple web-based tool to automatically censor patient histology report PDF.
-* Extract Metadata📝: a tool to extract metadata from histology reports such as biopsy number, muscle, diagnosis...
-* Auto Classify 🪄: a tool to automatically predict a diagnosis of congenital myopathy subtype from an histology reports using AI (large language models). Currently can predict between: Nemaline Myopathy, Core Myopathy, Centro-nuclear Myopathy, Non Congenital Myopathy (NON-MC).
-* Report Search 🔎: a tool to search for a specific term in a set of histology reports. The tool will return the top 5 reports containing closest to your symptom query from our database of reports..
+* **Anonymizer🕵️**: a simple web-based tool to automatically censor patient histology report PDF.
+* **Extract Metadata📝**: a tool to extract metadata from histology reports such as biopsy number, muscle, diagnosis...
+* **Auto Classify 🪄**: a tool to automatically predict a diagnosis of congenital myopathy subtype from an histology reports using AI (large language models). Currently can predict between: Nemaline Myopathy, Core Myopathy, Centro-nuclear Myopathy, Non Congenital Myopathy (NON-MC).
+* **Report Search 🔎**: a tool to search for a specific term in a set of histology reports. The tool will return the top 5 reports containing closest to your symptom query from our database of reports..
 
-🚨 DISCLAIMER: This tool use [OpenAI API](https://openai.com/). All data inserted in this tools are sent to OpenAI servers. Please do not upload private or non-anonymized data. As per their terms of service [OpenAI does not retain any data  (for more time than legal requirements, click for source) and do not use them for trainning.](https://openai.com/policies/api-data-usage-policies) However, we do not take any responsibility for any data leak.
+🚨 **DISCLAIMER:** This tool use [OpenAI API](https://openai.com/). All data inserted in this tools are sent to OpenAI servers. Please do not upload private or non-anonymized data. As per their terms of service [OpenAI does not retain any data  (for more time than legal requirements, click for source) and do not use them for trainning.](https://openai.com/policies/api-data-usage-policies) However, we do not take any responsibility for any data leak.
 
 This project is free and open-source under the AGPL license, feel free to fork and contribute to the development.
 #### _Warning: This tool is still in early phases and active development._
