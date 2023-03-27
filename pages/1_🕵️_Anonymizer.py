@@ -60,7 +60,7 @@ st.info("10 PDFs takes ~1min to be processed.")
 with st.sidebar:
     st.write("Report Language")
     lang = st.selectbox("Select Language", ("fra", "eng"))
-    mode = st.selectbox("Select Mode", ("regex", "regex+chatgpt"))
+    mode = st.selectbox("Select Mode", ("regex", "chatgpt"))
 
 uploaded_file = st.file_uploader(
     "Choose PDFs",

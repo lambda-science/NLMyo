@@ -3,21 +3,29 @@ from streamlit.components.v1 import html
 
 st.set_page_config(
     page_title="NLMyo",
-    page_icon="🧰",
+    page_icon="🔧",
 )
 
-st.write("# Welcome to NLMyo 🧰")
+st.write("# Welcome to NLMyo 🔧")
 
 st.sidebar.success("Select the corresponding tools above.")
 
 st.markdown(
     """
 
-![NLMyo Banner](https://miro.medium.com/v2/resize:fit:1200/0*BKOvjpzn6SPKs81L.png)
+![NLMyo Banner](https://i.imgur.com/8yAEAmg.png)
 
-[NLMyo🧰 is a toolbox to leverage the power of Large Language Models (LLMs) to exploit histology text reports. ](https://github.com/lambda-science/NLMyo)  
-
+### [NLMyo🔧](https://github.com/lambda-science/NLMyo) is a toolbox built to leverage the power of Large Language Models (LLMs) to exploit histology text reports. 
 ## How to Use
+Select a tool on the left panel to start using NLMyo.  
+Here is a sample pdf that you can use with the tools [download](https://www.lbgi.fr/~meyer/IMPatienT/sample_demo_report.pdf)  
+Available tools:
+- **Anonymizer🕵️**: a simple web-based tool to automatically censor patient histology report PDF.
+- **Extract Metadata📝:** a tool to extract metadata from histology reports such as biopsy number, muscle, diagnosis...
+- **Auto Classify 🪄:** a tool to automatically predict a diagnosis of congenital myopathy subtype from an histology reports using AI (large language models). Currently can predict between: Nemaline Myopathy, Core Myopathy, Centro-nuclear Myopathy, Non Congenital Myopathy (NON-MC).
+- **Report Search 🔎:** a tool to search for a specific term in a set of histology reports. The tool will return the top 5 reports containing closest to your symptom query from our database of reports..
+
+🚨 **DISCLAIMER: This tool use [OpenAI API](https://openai.com/). All data inserted in this tools are sent to OpenAI servers. Please do not upload private or non-anonymized data. As per their terms of service [OpenAI does not retain any data  (for more time than legal requirements, click for source) and do not use them for trainning.](https://openai.com/policies/api-data-usage-policies) However, we do not take any responsibility for any data leak.**
 
 ## Contact
 Creator and Maintainer: [**Corentin Meyer**, 3rd year PhD Student in the CSTB Team, ICube — CNRS — Unistra](https://lambda-science.github.io/)  <corentin.meyer@etu.unistra.fr>  

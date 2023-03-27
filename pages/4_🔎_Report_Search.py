@@ -27,14 +27,16 @@ def load_chroma():
 
 vectordb = load_chroma()
 
-# From here down is all the StreamLit UI.
-st.header("Report Search 🔎")
+st.write("# Report Search 🔎")
 st.markdown(
     """
-Enter a symptom of interest, and the tool will find the best fitting reports containing this symptom.
+### Report Search 🔎 is a simple web-based tool that act as a search engine for patient histology report.  
+Simply enter a symptom of interest or a small description or diagnosis, and the tool will find the top-5 best fitting reports containing this symptom or diagnosis from our database of 150 reports.
+
+🚨 DISCLAIMER: This tool use [OpenAI API](https://openai.com/). All data inserted in this tools are sent to OpenAI servers. Please do not upload private or non-anonymized data. As per their terms of service [OpenAI does not retain any data  (for more time than legal requirements, click for source) and do not use them for trainning.](https://openai.com/policies/api-data-usage-policies) However, we do not take any responsibility for any data leak.  
+Creator and Maintainer: [**Corentin Meyer**, 3rd year PhD Student in the CSTB Team, ICube — CNRS — Unistra](https://lambda-science.github.io/)  <corentin.meyer@etu.unistra.fr>  
 """
 )
-
 input_text = st.text_input("What symptoms are you looking for ? ", key="input")
 
 
