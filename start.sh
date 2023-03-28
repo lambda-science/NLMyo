@@ -7,5 +7,5 @@ if [ -f $PIDPATH ]; then
 	kill $(cat $PIDPATH)
 fi
 
-nohup streamlit run Home.py --server.baseUrlPath /NLMyo --browser.serverAddress lbgi.fr --server.fileWatcherType none --browser.gatherUsageStats false --logger.level warning > log 2>&1 &
+nohup streamlit run Home.py --server.baseUrlPath /NLMyo --browser.serverAddress lbgi.fr --server.fileWatcherType none --browser.gatherUsageStats false --server.port 8503 --logger.level warning > log 2>&1 &
 echo $! > $DIR/pid
