@@ -4,6 +4,7 @@ import os
 import sys
 import openai
 import json
+from streamlit.components.v1 import html
 
 sys.path.append("../")
 from src import TextReport
@@ -105,3 +106,9 @@ if uploaded_file or input_text:
     except:
         st.write("Error decoding JSON raw output:")
         st.write(result_str)
+
+html(
+    f"""
+    <script defer data-domain="lbgi.fr/nlmyo" src="https://plausible.cmeyer.fr/js/script.js"></script>
+    """
+)

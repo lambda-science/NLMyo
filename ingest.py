@@ -17,7 +17,7 @@ texts = []
 metadatas = []
 sentences_to_embed = []
 
-list_files = glob.glob("data/text/*")
+list_files = glob.glob("data/processed/*")
 for file in list_files:
     with open(file) as f:
         document_text = f.read()

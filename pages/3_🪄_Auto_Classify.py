@@ -5,6 +5,7 @@ from dotenv import load_dotenv
 import os
 import numpy as np
 import sys
+from streamlit.components.v1 import html
 
 sys.path.append("../")
 from src import TextReport
@@ -91,3 +92,9 @@ if uploaded_file or input_text:
     confidence = loaded_model.predict_proba(embedding.reshape(1, -1))
     for index, value in enumerate(confidence[0]):
         st.write(f"Confidence score for:  {label_dict[index]}: {round(value*100)}% ")
+
+html(
+    f"""
+    <script defer data-domain="lbgi.fr/nlmyo" src="https://plausible.cmeyer.fr/js/script.js"></script>
+    """
+)

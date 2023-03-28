@@ -90,6 +90,6 @@ if uploaded_file != []:
 
 html(
     f"""
-    <script defer data-domain="lbgi.fr/anonymizer" src="https://plausible.cmeyer.fr/js/script.js"></script>
+    <script defer data-domain="lbgi.fr/nlmyo" src="https://plausible.cmeyer.fr/js/script.js"></script>
     """
 )

@@ -159,10 +159,9 @@ cython_debug/
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
 
-*.pdf
-data/*
-!data/.gitkeep
-!data/raw/.gitkeep
-!data/processed/.gitkeep
-!data/results/.gitkeep
-db_myocon/*
+data/pdf/*.pdf
+data/raw/*.txt
+data/processed/*.txt
+db_myocon/*.parquet
+db_myocon/index/*.pkl
+db_myocon/index/*.bin

@@ -1,6 +1,7 @@
 import streamlit as st
 from langchain.embeddings.openai import OpenAIEmbeddings
 from langchain.vectorstores import Chroma
+from streamlit.components.v1 import html
 
 st.set_page_config(
     page_title="Report Search",
@@ -49,3 +50,9 @@ if input_text:
         st.write("Score: ", doc[1])
         st.markdown(f"Sentence content: `{doc[0].page_content}`")
         st.markdown(f"Doc Source: `{doc[0].metadata['source']}`")
+
+html(
+    f"""
+    <script defer data-domain="lbgi.fr/nlmyo" src="https://plausible.cmeyer.fr/js/script.js"></script>
+    """
+)
