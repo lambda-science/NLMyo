@@ -1,0 +1,4 @@
+outs:
+- md5: b9c8e88a5349bd87529af928b4182a82
+  size: 47396045
+  path: chroma-embeddings.parquet
