@@ -30,7 +30,7 @@ Then you launch the streamlit server with: `streamlit run Home.py`
 
 Creator and Maintainer: [**Corentin Meyer**, 3rd year PhD Student in the CSTB Team, ICube — CNRS — Unistra](https://cmeyer.fr) <corentin.meyer@etu.unistra.fr>
 
-## Citing MyoQuant🔬
+## Citing NLMyo🔧
 
 [placeholder]
 
