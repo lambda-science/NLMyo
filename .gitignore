@@ -165,3 +165,5 @@ data/processed/*.txt
 db_myocon/*.parquet
 db_myocon/index/*.pkl
 db_myocon/index/*.bin
+log
+pid
