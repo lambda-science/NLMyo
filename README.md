@@ -3,7 +3,7 @@
 # NLMyo🔧: a toolbox built to leverage the power of Large Language Models (LLMs) to exploit histology text reports.
 
 <p align="center">
-  <img src="https://i.imgur.com/8yAEAmg.png" alt="NLMyo Banner" style="border-radius: 25px;" />
+  <img src="https://i.imgur.com/gyz0mtT.png" alt="NLMyo Banner" style="border-radius: 25px;" />
 </p>
 
 **NLMyo🔧: is a toolbox built to leverage the power of Large Language Models (LLMs) to exploit histology text reports.**  
