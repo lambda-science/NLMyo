@@ -13,7 +13,7 @@ st.sidebar.success("Select the corresponding tools above.")
 st.markdown(
     """
 
-![NLMyo Banner](https://i.imgur.com/gyz0mtT.png)
+![NLMyo Banner](https://i.imgur.com/avfbQiE.png)
 
 ### [NLMyo🔧](https://github.com/lambda-science/NLMyo) is a toolbox built to leverage the power of Large Language Models (LLMs) to exploit histology text reports. 
 ## How to Use
