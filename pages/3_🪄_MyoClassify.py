@@ -1,17 +1,16 @@
 import streamlit as st
 import joblib
-import openai
-from dotenv import load_dotenv
 import os
 import numpy as np
 import sys
 from streamlit.components.v1 import html
+from langchain.embeddings import HuggingFaceInstructEmbeddings
 
 sys.path.append("../")
 from src import TextReport
 
 st.set_page_config(
-    page_title="Auto Classify",
+    page_title="MyoClassify",
     page_icon="🪄",
 )
 
@@ -23,12 +22,18 @@ def callback():
     st.session_state["id"] += 1
 
 
-load_dotenv()
-openai.api_key = os.getenv("OPENAI_API_KEY")
+@st.cache_resource()
+def load_embedding_model():
+    embeddings = HuggingFaceInstructEmbeddings(
+        query_instruction="Represent the medicine document for classification: "
+    )
+    return embeddings
 
 
+@st.cache_data()
 def embed_text(text):
-    results = openai.Embedding.create(model="text-embedding-ada-002", input=text)
+    embeddings = load_embedding_model()
+    results = embeddings.embed_query(text)
     return results
 
 
@@ -43,17 +48,16 @@ with st.sidebar:
     st.write("Report Language")
     lang = st.selectbox("Select Language", ("fra", "eng"))
 
-loaded_model = joblib.load("models/openAI_model.joblib")
+loaded_model = joblib.load("models/instructor_model.joblib")
 label_dict = {i: label for i, label in enumerate(loaded_model.classes_)}
 
 
-st.write("# Auto Classify🪄")
+st.write("# MyoClassify🪄")
 st.markdown(
     """
-### Auto Classify🪄 is a simple web-based tool to automatically predict a congenital myopathy sub-type diagnosis from patient histology report PDF.
+### MyoClassify🪄 is a simple web-based tool to automatically predict a congenital myopathy sub-type diagnosis from patient histology report PDF.
 Upload a single PDF file or copy paste your text-report and the tool will automatically try to predict the congenital myopathy diagnosis among: nemaline myopathy, core myopathy, centrenoculear myopathy or non congenital myopathy (NON-MC).
 
-🚨 DISCLAIMER: This tool use [OpenAI API](https://openai.com/). All data inserted in this tools are sent to OpenAI servers. Please do not upload private or non-anonymized data. As per their terms of service [OpenAI does not retain any data  (for more time than legal requirements, click for source) and do not use them for trainning.](https://openai.com/policies/api-data-usage-policies) However, we do not take any responsibility for any data leak.    
 Creator and Maintainer: [**Corentin Meyer**, 3rd year PhD Student in the CSTB Team, ICube — CNRS — Unistra](https://lambda-science.github.io/)  <corentin.meyer@etu.unistra.fr>  
 """
 )
@@ -85,7 +89,7 @@ if uploaded_file or input_text:
         st.write(raw_text)
     st.markdown("# Most probable diagnosis")
     results = embed_text(input_text)
-    embedding = np.array(results["data"][0]["embedding"])
+    embedding = np.array(results)
     prediction = loaded_model.predict(embedding.reshape(1, -1))
     st.write("Prediction: ", prediction[0])
     st.markdown("# Probability of each diagnosis")

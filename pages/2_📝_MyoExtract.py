@@ -10,12 +10,15 @@ sys.path.append("../")
 from src import TextReport
 
 st.set_page_config(
-    page_title="Extract Metadata",
+    page_title="MyoExtract",
     page_icon="📝",
 )
 
 if "id" not in st.session_state:
     st.session_state["id"] = 0
+
+load_dotenv()
+openai.api_key = os.getenv("OPENAI_API_KEY")
 
 
 def callback():
@@ -57,10 +60,10 @@ def st_analyze_pdf(uploaded_file, lang):
     return raw_text
 
 
-st.write("# Extract Metadata 📝")
+st.write("# MyoExtract 📝")
 st.markdown(
     """
-### Extract Metadata 📝 is a simple web-based tool to automatically extract common metadata from patient histology report PDF to a JSON format.  
+### MyoExtract 📝 is a simple web-based tool to automatically extract common metadata from patient histology report PDF to a JSON format.  
 Upload a single PDF file or copy paste your text-report and the tool will automatically find for your all: complete name, age, birth date, biopsy date, biopsy sending date, muscle, biopsy number, diagnosis, presence of anomaly in PAS staining, presence of anomaly in Soudan Staining, presence of anomaly in COX staining, presence of anomaly in ATP staining,  presence of anomaly in Phosrylase staining.
 
 🚨 DISCLAIMER: This tool use [OpenAI API](https://openai.com/). All data inserted in this tools are sent to OpenAI servers. Please do not upload private or non-anonymized data. As per their terms of service [OpenAI does not retain any data  (for more time than legal requirements, click for source) and do not use them for trainning.](https://openai.com/policies/api-data-usage-policies) However, we do not take any responsibility for any data leak.    

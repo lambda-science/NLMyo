@@ -1,4 +1,4 @@
 outs:
-- md5: c118620362a89a32a0538c6ee102ddb4
+- md5: 1eda581bce2f837681a64283e405c070
   size: 557
   path: chroma-collections.parquet
