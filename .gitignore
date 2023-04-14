@@ -161,6 +161,9 @@ cython_debug/
 
 data/pdf/*.pdf
 data/raw/*.txt
+data/text/*.txt
+data/raw_pdf/*.pdf
+data/raw_text/*.txt
 data/processed/*.txt
 db_myocon/*.parquet
 db_myocon/index/*.pkl
@@ -168,3 +171,6 @@ db_myocon/index/*.bin
 log
 pid
 .nfs*
+*/wandb
+*.csv
+*.xlsx
