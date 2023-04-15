@@ -174,3 +174,4 @@ pid
 */wandb
 *.csv
 *.xlsx
+models/vicuna*

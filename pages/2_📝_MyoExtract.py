@@ -5,6 +5,9 @@ import sys
 import openai
 import json
 from streamlit.components.v1 import html
+from langchain import PromptTemplate, LLMChain
+from langchain.llms import LlamaCpp
+
 
 sys.path.append("../")
 from src import TextReport
@@ -31,8 +34,16 @@ with st.sidebar:
     mode = st.selectbox("Select Mode", ("private-AI", "openAI"))
 
 
+@st.cache_resource()
+def load_vicuna():
+    llm_vicuna_model = LlamaCpp(
+        model_path="./models/vicuna-7B-1.1-GPTQ-4bit-32g.GGML.bin"
+    )
+    return llm_vicuna_model
+
+
 @st.cache_data()
-def extract_metadata(prompt):
+def extract_metadata_openAI(prompt):
     system = """
 You are an assistant that extract informations from free text. OUTPUT MUST KEEP THE KEY NAMES AND FOLLOW THIS JSON FORMAT SIMPLY REPLACE THE VALUES. IF YOU CAN'T FIND AN INFORMATION SIMPLY INDICATE N/A DON'T TRY TO INVENT IT. Here is the list of informations to retrives, json key are indicated in parenthesis: complete name (name), age (age), birth date (birth), biopsy date (biodate), biopsy sending date (sending), muscle (muscle), biopsy number (bionumber), diagnosis (diag), presence of anomaly in PAS staining (PAS), presence of anomaly in Soudan Staining (Soudan), presence of anomaly in COX staining (COX), presence of anomaly in ATP staining (ATP),  presence of anomaly in Phosrylase staining (phospho)
 Please report all dates to the format DD-MM-YYYY and all ages in years, indicate 0 if less than 1 year.
@@ -52,6 +63,24 @@ Please report all dates to the format DD-MM-YYYY and all ages in years, indicate
     )
     # print(r["usage"])
     return r["choices"][0]["message"]["content"]
+
+
+@st.cache_data()
+def extract_metadata_privateLLM(input_text):
+    template = """
+You are an assistant that extract informations from free text. OUTPUT MUST KEEP THE KEY NAMES AND FOLLOW THIS JSON FORMAT SIMPLY REPLACE THE VALUES. IF YOU CAN'T FIND AN INFORMATION SIMPLY INDICATE N/A DON'T TRY TO INVENT IT. Here is the list of informations to retrives, json key are indicated in parenthesis: complete name (name), age (age), birth date (birth), biopsy date (biodate), biopsy sending date (sending), muscle (muscle), biopsy number (bionumber), diagnosis (diag), presence of anomaly in PAS staining (PAS), presence of anomaly in Soudan Staining (Soudan), presence of anomaly in COX staining (COX), presence of anomaly in ATP staining (ATP),  presence of anomaly in Phosrylase staining (phospho)
+Please report all dates to the format DD-MM-YYYY and all ages in years, indicate 0 if less than 1 year.
+
+{"name":["John Doe", "Jane John"], "age":"1", "birth": "01-01-1990", "biodate": "02-10-1995", "sending": "02-10-1995", "muscle": "quadriceps", "bionumber": "1234-56", "diag": "Core Myopathy", "PAS": "yes", "Soudan": "no", "COX": "N/A", "ATP": "N/A", "phospho": "N/A"}
+INPUT:
+{question}
+OUTPUT:
+
+"""
+    prompt = PromptTemplate(template=template, input_variables=["question"])
+    llm_chain = LLMChain(prompt=prompt, llm=llm_vicuna_model)
+    results = llm_chain.run(input_text)
+    return results
 
 
 @st.cache_data()
@@ -102,7 +131,10 @@ if uploaded_file or input_text:
     OUTPUT:
     
     """
-    result_str = extract_metadata(prompt)
+    if mode == "private-AI":
+        result_str = extract_metadata_privateLLM(raw_text)
+    elif mode == "openAI":
+        result_str = extract_metadata_openAI(prompt)
     st.write("## Analysis Results")
     try:
         json_results = json.loads(result_str)
@@ -116,3 +148,4 @@ html(
     <script defer data-domain="lbgi.fr/nlmyo" src="https://plausible.cmeyer.fr/js/script.js"></script>
     """
 )
+llm_vicuna_model = load_vicuna()

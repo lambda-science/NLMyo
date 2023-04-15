@@ -30,6 +30,7 @@ Here is a sample pdf that you can use with the tools [PDF File](https://www.lbgi
 
 - Create a `.env` file with your OpenAI API key such as `OPENAI_API_KEY=sk-...`
 - Install the venv with `poetry install` and activate with `source .venv/bin/activate`
+- Get the Vicuna LLM model `cd models && wget https://huggingface.co/TheBloke/vicuna-7B-1.1-GPTQ-4bit-128g-GGML/blob/main/vicuna-7B-1.1-GPTQ-4bit-32g.GGML.bin`
 - If you are from our lab and have SSH access you can pull the DVC Data (Raw Data + ChromaDB) with `dvc pull`
 - If you are not from our lab and want to create your own embedding. Create a folder `data/processed/` containing all your `*.txt` file to embed. And run `python ingest.py` to create the ChromaDB (vector store)
 - Run the app using `streamlit run Home.py`
