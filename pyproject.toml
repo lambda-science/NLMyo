@@ -20,6 +20,7 @@ chromadb = "^0.3.11"
 dvc = {extras = ["ssh"], version = "^2.51.0"}
 instructorembedding = "^1.0.0"
 wandb = "^0.14.2"
+llama-cpp-python = "^0.1.33"
 
 [tool.poetry.dev-dependencies]
 mypy = "^0.991"
