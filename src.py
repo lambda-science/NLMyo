@@ -68,7 +68,7 @@ class TextReport:
         self.text_as_list = self.raw_text.split("\n")
         return self.raw_text
 
-    def pdf_censor(self, output_folder):
+    def pdf_censor(self, output_folder, mode="regex"):
         self.image_stack = convert_from_bytes(self.file_obj.read())
         censored_image_stack = []
         page_list = []
