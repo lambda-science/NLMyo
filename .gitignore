@@ -175,3 +175,4 @@ pid
 *.csv
 *.xlsx
 models/vicuna*
+data_old
