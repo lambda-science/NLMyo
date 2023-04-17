@@ -22,6 +22,7 @@ instructorembedding = "^1.0.0"
 wandb = "^0.14.2"
 llama-cpp-python = "^0.1.33"
 pigeon-jupyter = "^0.1.0"
+deepl = "^1.14.0"
 
 [tool.poetry.dev-dependencies]
 mypy = "^0.991"

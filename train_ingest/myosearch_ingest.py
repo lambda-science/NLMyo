@@ -33,7 +33,7 @@ for index, text in enumerate(texts):
 # %%
 # embeddings = OpenAIEmbeddings()
 embeddings = HuggingFaceInstructEmbeddings(
-    query_instruction="Represent the medicine document for classification: "
+    query_instruction="Represent the medicine document for retrieval: "
 )
 docsearch = Chroma.from_texts(
     sentences_to_embed,
