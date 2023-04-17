@@ -177,3 +177,4 @@ pid
 models/vicuna*
 data_old
 /data
+/db_myocon
