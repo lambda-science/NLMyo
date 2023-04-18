@@ -94,10 +94,7 @@ st.write("# MyoExtract 📝")
 st.markdown(
     """
 ### MyoExtract 📝 is a simple web-based tool to automatically extract common metadata from patient histology report PDF to a JSON format.  
-Upload a single PDF file or copy paste your text-report and the tool will automatically find for your all: complete name, age, birth date, biopsy date, biopsy sending date, muscle, biopsy number, diagnosis, presence of anomaly in PAS staining, presence of anomaly in Soudan Staining, presence of anomaly in COX staining, presence of anomaly in ATP staining,  presence of anomaly in Phosrylase staining.
-
-🚨 DISCLAIMER: If you choose OpenAI on the left, this tool will use [OpenAI API](https://openai.com/). Data will be sent to OpenAI servers. If using OpenAI Model, do not upload private or non-anonymized data. As per their terms of service [OpenAI does not retain any data  (for more time than legal requirements, click for source) and do not use them for trainning.](https://openai.com/policies/api-data-usage-policies) However, we do not take any responsibility for any data leak.    
-Creator and Maintainer: [**Corentin Meyer**, 3rd year PhD Student in the CSTB Team, ICube — CNRS — Unistra](https://lambda-science.github.io/)  <corentin.meyer@etu.unistra.fr>  
+Upload a single PDF file or copy paste your text-report and the tool will automatically find for your all: complete name, age, birth date, biopsy date, biopsy sending date, muscle, biopsy number, diagnosis, presence of anomaly in PAS staining, presence of anomaly in Soudan Staining, presence of anomaly in COX staining, presence of anomaly in ATP staining,  presence of anomaly in Phosrylase staining.  
 """
 )
 

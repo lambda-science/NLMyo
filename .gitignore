@@ -178,3 +178,10 @@ models/vicuna*
 data_old
 /data
 /db_myocon
+.nfs*
+*.zip
+models/backup
+nohup.out
+results/*
+models/*gridsearch*
+models/*_mlpc*

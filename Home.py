@@ -23,8 +23,9 @@ Available tools:
 - **Anonymizer 🕵️**: a simple web-based tool to automatically censor patient histology report PDF.
 - **MyoExtract 📝:** a tool to extract metadata from histology reports such as biopsy number, muscle, diagnosis...
 - **MyoClassify 🪄:** a tool to automatically predict a diagnosis of congenital myopathy subtype from an histology reports using AI (large language models). Currently can predict between: Nemaline Myopathy, Core Myopathy, Centro-nuclear Myopathy, Non Congenital Myopathy (NON-MC).
-- **MyoSearch 🔎:** a tool to search for a specific term in a set of histology reports. The tool will return the top 5 reports containing closest to your symptom query from our database of reports..
+- **MyoSearch 🔎:** a tool to search for a specific term in a set of histology reports. The tool will return the top 5 reports containing closest to your symptom query from our database of reports.  
 
+🚨 DISCLAIMER: If you choose OpenAI instead of private AI in tools options, some tools will use [OpenAI API](https://openai.com/). Data will be sent to OpenAI servers. If using OpenAI Model, do not upload private or non-anonymized data. As per their terms of service [OpenAI does not retain any data  (for more time than legal requirements, click for source) and do not use them for trainning.](https://openai.com/policies/api-data-usage-policies) However, we do not take any responsibility for any data leak.    
 ## Contact
 Creator and Maintainer: [**Corentin Meyer**, 3rd year PhD Student in the CSTB Team, ICube — CNRS — Unistra](https://lambda-science.github.io/)  <corentin.meyer@etu.unistra.fr>  
 The source code for NLMyo is available [HERE](https://github.com/lambda-science/NLMyo)

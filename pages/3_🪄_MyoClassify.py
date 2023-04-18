@@ -4,7 +4,12 @@ import os
 import numpy as np
 import sys
 from streamlit.components.v1 import html
-from langchain.embeddings import HuggingFaceInstructEmbeddings
+from langchain.embeddings import HuggingFaceInstructEmbeddings, OpenAIEmbeddings
+from dotenv import load_dotenv
+import openai
+
+load_dotenv()
+openai.api_key = os.getenv("OPENAI_API_KEY")
 
 sys.path.append("../")
 from src import TextReport
@@ -38,6 +43,12 @@ def embed_text(text):
 
 
 @st.cache_data()
+def embed_text_openai(text):
+    results = openai.Embedding.create(model="text-embedding-ada-002", input=text)
+    return results
+
+
+@st.cache_data()
 def st_analyze_pdf(uploaded_file, lang):
     pdf_object = TextReport(uploaded_file, lang=lang)
     raw_text = pdf_object.pdf_to_text()
@@ -47,9 +58,12 @@ def st_analyze_pdf(uploaded_file, lang):
 with st.sidebar:
     st.write("Report Language")
     lang = st.selectbox("Select Language", ("fra", "eng"))
+    mode = st.selectbox("Select Mode", ("Instructor", "openAI"))
 
-loaded_model = joblib.load("models/instructor_model.joblib")
-label_dict = {i: label for i, label in enumerate(loaded_model.classes_)}
+loaded_model_instructor_fr = joblib.load("models/instructor_fr_model_rf.joblib")
+loaded_model_instructor_en = joblib.load("models/instructor_en_model_rf.joblib")
+loaded_model_openai_fr = joblib.load("models/openai_fr_model_rf.joblib")
+loaded_model_openai_en = joblib.load("models/openai_en_model_rf.joblib")
 
 
 st.write("# MyoClassify🪄")
@@ -88,12 +102,60 @@ if uploaded_file or input_text:
         st.write("## Raw text")
         st.write(raw_text)
     st.markdown("# Most probable diagnosis")
-    results = embed_text(input_text)
-    embedding = np.array(results)
-    prediction = loaded_model.predict(embedding.reshape(1, -1))
+
+    if lang == "fra":
+        if mode == "Instructor":
+            results = embed_text(input_text)
+            embedding_features = np.array(results)
+            prediction = loaded_model_instructor_fr.predict(
+                embedding_features.reshape(1, -1)
+            )
+            confidence = loaded_model_instructor_fr.predict_proba(
+                embedding_features.reshape(1, -1)
+            )
+            label_dict = {
+                i: label for i, label in enumerate(loaded_model_instructor_fr.classes_)
+            }
+        elif mode == "openAI":
+            results = embed_text_openai(input_text)
+            embedding_features = np.array(results["data"][0]["embedding"])
+            prediction = loaded_model_openai_fr.predict(
+                embedding_features.reshape(1, -1)
+            )
+            confidence = loaded_model_openai_fr.predict_proba(
+                embedding_features.reshape(1, -1)
+            )
+            label_dict = {
+                i: label for i, label in enumerate(loaded_model_openai_fr.classes_)
+            }
+    elif lang == "eng":
+        if mode == "Instructor":
+            results = embed_text(input_text)
+            embedding_features = np.array(results)
+            prediction = loaded_model_instructor_en.predict(
+                embedding_features.reshape(1, -1)
+            )
+            confidence = loaded_model_instructor_en.predict_proba(
+                embedding_features.reshape(1, -1)
+            )
+            label_dict = {
+                i: label for i, label in enumerate(loaded_model_instructor_en.classes_)
+            }
+        elif mode == "openAI":
+            results = embed_text_openai(input_text)
+            embedding_features = np.array(results["data"][0]["embedding"])
+            prediction = loaded_model_openai_en.predict(
+                embedding_features.reshape(1, -1)
+            )
+            confidence = loaded_model_openai_en.predict_proba(
+                embedding_features.reshape(1, -1)
+            )
+            label_dict = {
+                i: label for i, label in enumerate(loaded_model_openai_en.classes_)
+            }
+
     st.write("Prediction: ", prediction[0])
     st.markdown("# Probability of each diagnosis")
-    confidence = loaded_model.predict_proba(embedding.reshape(1, -1))
     for index, value in enumerate(confidence[0]):
         st.write(f"Confidence score for:  {label_dict[index]}: {round(value*100)}% ")
 
