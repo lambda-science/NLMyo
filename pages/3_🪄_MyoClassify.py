@@ -69,8 +69,13 @@ loaded_model_openai_en = joblib.load("models/openai_en_model_rf.joblib")
 st.write("# MyoClassify🪄")
 st.markdown(
     """
-### MyoClassify🪄 is a simple web-based tool to automatically predict a congenital myopathy sub-type diagnosis from patient histology report PDF.
-Upload a single PDF file or copy paste your text-report and the tool will automatically try to predict the congenital myopathy diagnosis among: nemaline myopathy, core myopathy, centrenoculear myopathy or non congenital myopathy (NON-MC).
+### MyoClassify🪄 a tool to automatically predict a congenital myopathy sub-type diagnosis from patient histology report PDF.
+Upload a single PDF file or copy paste your text-report and the tool will automatically try to predict the congenital myopathy diagnosis among: nemaline myopathy, core myopathy, centrenoculear myopathy or non congenital myopathy (NON-MC). On the left menu you can select your repote language and the analysis mode (see bellow).  
+There is two different modes to extract data from the report:  
+* **Instructor** (can be less accurate but 100% private, self-hosted AI)
+* **OpenAI** (more accurate but use OpenAI API, see disclaimer.)  
+
+🚨 DISCLAIMER: If you choose OpenAI instead of private AI in tools options, some tools will use [OpenAI API](https://openai.com/). Data will be sent to OpenAI servers. If using OpenAI Model, do not upload private or non-anonymized data. As per their terms of service [OpenAI does not retain any data  (for more time than legal requirements, click for source) and do not use them for trainning.](https://openai.com/policies/api-data-usage-policies) However, we do not take any responsibility for any data leak.  
 
 Creator and Maintainer: [**Corentin Meyer**, 3rd year PhD Student in the CSTB Team, ICube — CNRS — Unistra](https://lambda-science.github.io/)  <corentin.meyer@etu.unistra.fr>  
 """

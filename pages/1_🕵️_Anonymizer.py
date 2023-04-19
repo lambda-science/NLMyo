@@ -48,7 +48,7 @@ def st_zip_file(uploaded_file, lang, mode="regex"):
 st.write("# Anonymizer🕵️")
 st.markdown(
     """
-### Anonymizer🕵️ is a simple web-based tool to automatically censor patient histology report PDF.  
+### Anonymizer🕵️ a tool to automatically censor patient histology report PDF.  
 Upload multiple PDF files and the tool will automatically censor the patient name, date of birth, date of the report and give you a download link to the archive.  
 No data are stored on the server, everything is erased right after the anonymization.  
 There is three different modes to anonymize the reports: 

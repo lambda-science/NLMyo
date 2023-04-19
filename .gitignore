@@ -185,3 +185,4 @@ nohup.out
 results/*
 models/*gridsearch*
 models/*_mlpc*
+models/ggml-vicuna-7b-1.1-q4_0.bin
