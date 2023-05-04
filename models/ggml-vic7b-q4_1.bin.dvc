@@ -1,0 +1,4 @@
+outs:
+- md5: ea896a50c960da032d9fa1bef415f499
+  size: 5055128192
+  path: ggml-vic7b-q4_1.bin

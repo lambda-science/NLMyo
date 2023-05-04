@@ -28,13 +28,13 @@ def callback():
 with st.sidebar:
     st.write("Report Language")
     lang = st.selectbox("Select Language", ("fra", "eng"))
-    mode = st.selectbox("Select Mode", ("private-AI", "openAI"))
+    mode = st.selectbox("Select Mode", ("openAI", "private-AI"))
 
 
 @st.cache_resource()
 def load_vicuna():
     llm_vicuna_model = LlamaCpp(
-        model_path="./models/ggml-vicuna-7b-1.1-q4_0.bin", temperature=0.01, n_ctx=2048
+        model_path="./models/ggml-vic7b-q4_1.bin", temperature=0.01, n_ctx=2048
     )
     return llm_vicuna_model
 

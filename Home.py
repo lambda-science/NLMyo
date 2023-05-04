@@ -1,5 +1,10 @@
 import streamlit as st
 from streamlit.components.v1 import html
+from dvc.repo import Repo
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
 
 st.set_page_config(
     page_title="NLMyo",
@@ -36,6 +41,12 @@ The source code for NLMyo is available [HERE](https://github.com/lambda-science/
 MyoQuant is born within the collaboration between the [CSTB Team @ ICube](https://cstb.icube.unistra.fr/en/index.php/Home) led by Julie D. Thompson, the [Morphological Unit of the Institute of Myology of Paris](https://www.institut-myologie.org/en/recherche-2/neuromuscular-investigation-center/morphological-unit/) led by Teresinha Evangelista, the [imagery platform MyoImage of Center of Research in Myology](https://recherche-myologie.fr/technologies/myoimage/) led by Bruno Cadot, [the photonic microscopy platform of the IGMBC](https://www.igbmc.fr/en/plateformes-technologiques/photonic-microscopy) led by Bertrand Vernay and the [Pathophysiology of neuromuscular diseases team @ IGBMC](https://www.igbmc.fr/en/igbmc/a-propos-de-ligbmc/directory/jocelyn-laporte) led by Jocelyn Laporte.  
 """
 )
+
+if not os.path.exists("./db_myocon"):
+    repo = Repo()
+    # set password for the remote
+    repo.config["remote"]["ssh_lbgi_hug"]["password"] = os.getenv("DVC_PASSWORD")
+    repo.pull()
 
 html(
     f"""

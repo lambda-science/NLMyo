@@ -1,8 +1,13 @@
 [core]
-    remote = ssh_lbgi
+    remote = ssh_lbgi_hug
 ['remote "ssh_lbgi"']
     user = meyer
     url = ssh://ssh.lbgi.fr/home/meyer/dvc
     ask_password = True
+['remote "ssh_lbgi_hug"']
+    user = meyer
+    url = ssh://ssh.lbgi.fr/home/meyer/dvc
+    ask_password = False
+
 ['remote "local_backup"']
     url = /tmp/dvcstore

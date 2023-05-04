@@ -1,3 +1,15 @@
+---
+title: NLMyo
+emoji: 🔧
+colorFrom: yellow
+colorTo: cyan
+sdk: streamlit
+sdk_version: 1.22.0
+app_file: Home.py
+pinned: false
+license: agpl-3.0
+---
+
 ![Twitter Follow](https://img.shields.io/twitter/follow/corentinm_py?style=social) ![GitHub last commit](https://img.shields.io/github/last-commit/lambda-science/NLMyo) ![GitHub](https://img.shields.io/github/license/lambda-science/NLMyo)
 
 # NLMyo🔧: a toolbox built to leverage the power of Large Language Models (LLMs) to exploit histology text reports.
@@ -30,7 +42,7 @@ Here is a sample pdf that you can use with the tools [PDF File](https://www.lbgi
 
 - Create a `.env` file with your OpenAI API key such as `OPENAI_API_KEY=sk-...`
 - Install the venv with `poetry install` and activate with `source .venv/bin/activate`
-- Get the Vicuna LLM model `cd models && wget https://huggingface.co/eachadea/ggml-vicuna-7b-1.1/resolve/main/ggml-vicuna-7b-1.1-q4_0.bin`
+- Get the Vicuna LLM model `cd models && wget https://huggingface.co/eachadea/ggml-vicuna-7b-1.1/resolve/main/ggml-vic7b-q4_1.bin`
 - If you are from our lab and have SSH access you can pull the DVC Data (Raw Data + ChromaDB) with `dvc pull`
 - If you are not from our lab and want to create your own embedding. Create a folder `data/processed/` containing all your `*.txt` file to embed. And run `python ingest.py` to create the ChromaDB (vector store)
 - Run the app using `streamlit run Home.py`
