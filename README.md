@@ -1,15 +1,3 @@
----
-title: NLMyo
-emoji: 🔧
-colorFrom: yellow
-colorTo: cyan
-sdk: streamlit
-sdk_version: 1.22.0
-app_file: Home.py
-pinned: false
-license: agpl-3.0
----
-
 ![Twitter Follow](https://img.shields.io/twitter/follow/corentinm_py?style=social) ![GitHub last commit](https://img.shields.io/github/last-commit/lambda-science/NLMyo) ![GitHub](https://img.shields.io/github/license/lambda-science/NLMyo)
 
 # NLMyo🔧: a toolbox built to leverage the power of Large Language Models (LLMs) to exploit histology text reports.
