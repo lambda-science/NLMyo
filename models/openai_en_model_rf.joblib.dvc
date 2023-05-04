@@ -1,0 +1,4 @@
+outs:
+- md5: f64940133f7576295f6961c2eb69ddcd
+  size: 411721
+  path: openai_en_model_rf.joblib

@@ -1,2 +1,6 @@
 /ggml-vic7b-q5_0.bin
 /ggml-vic7b-q4_1.bin
+/instructor_en_model_rf.joblib
+/instructor_fr_model_rf.joblib
+/openai_en_model_rf.joblib
+/openai_fr_model_rf.joblib

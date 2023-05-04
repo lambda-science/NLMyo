@@ -1,0 +1,4 @@
+outs:
+- md5: 11bb896b644dd3c8f48e4119cfeb92b9
+  size: 212953
+  path: instructor_en_model_rf.joblib
