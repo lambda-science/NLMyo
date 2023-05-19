@@ -18,12 +18,15 @@ st.sidebar.success("Select the corresponding tools above.")
 st.markdown(
     """
 
+### [NLMyo🔧](https://github.com/lambda-science/NLMyo) is a toolbox built to leverage the power of Large Language Models (LLMs) to exploit histology text reports. 
 ![NLMyo Banner](https://i.imgur.com/avfbQiE.png)
 
-### [NLMyo🔧](https://github.com/lambda-science/NLMyo) is a toolbox built to leverage the power of Large Language Models (LLMs) to exploit histology text reports. 
+### NLMyo🔧 Graphic Summary
+![NLMyo Workflow](https://i.imgur.com/olKBlxs.png)
+
+
 ## How to Use
-Select a tool on the left panel to start using NLMyo.  
-Here is a sample pdf that you can use with the tools [PDF File](https://www.lbgi.fr/~meyer/IMPatienT/sample_demo_report.pdf)  
+Select a tool on the left panel to start using NLMyo. You can upload you own PDF or click the "Load Sample PDF" button in the tools to use this [sample PDF](https://www.lbgi.fr/~meyer/IMPatienT/sample_demo_report.pdf).  
 Available tools:
 - **Anonymizer 🕵️**: a simple web-based tool to automatically censor patient histology report PDF.
 - **MyoExtract 📝:** a tool to extract metadata from histology reports such as biopsy number, muscle, diagnosis...

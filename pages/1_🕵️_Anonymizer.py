@@ -4,6 +4,9 @@ from streamlit.components.v1 import html
 from zipfile import ZipFile
 import uuid
 
+import requests
+from io import BytesIO
+
 import sys
 
 sys.path.append("../")
@@ -20,6 +23,12 @@ if "id" not in st.session_state:
 
 def callback():
     st.session_state["id"] += 1
+
+
+class NamedBytesIO(BytesIO):
+    def __init__(self, *args, **kwargs):
+        self.name = kwargs.pop("name", "default_name")
+        BytesIO.__init__(self, *args, **kwargs)
 
 
 @st.cache_resource(ttl=1)
@@ -69,12 +78,28 @@ with st.sidebar:
     lang = st.selectbox("Select Language", ("fra", "eng"))
     mode = st.selectbox("Select Mode", ("regex", "openAI", "private-AI"))
 
+
+default_file_url = "https://www.lbgi.fr/~meyer/IMPatienT/sample_demo_report.pdf"
+
+
+st.write("Upload your list of PDF OR click the Load Sample PDF button")
 uploaded_file = st.file_uploader(
     "Choose PDFs",
     type=["pdf"],
     accept_multiple_files=True,
     key=st.session_state["id"],
 )
+if st.button("Load Sample PDF"):
+    # Download the default file
+    response = requests.get(default_file_url)
+    # Convert the downloaded content into a file-like object
+    file_object = NamedBytesIO(response.content, name="sample.pdf")
+    file_path = os.path.join(file_object.name)
+    with open(file_path, "wb") as file:
+        file.write(response.content)
+    uploaded_file = [file_object]
+
+
 if uploaded_file != []:
     st.write(f"{len(uploaded_file)} file(s) uploaded !")
     # random UUID name for zip file

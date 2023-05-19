@@ -4,8 +4,11 @@ import sys
 import json
 from streamlit.components.v1 import html
 from langchain import PromptTemplate, LLMChain
-from langchain.llms import LlamaCpp, OpenAIChat
+from langchain.llms import llamacpp
+from langchain.chat_models import ChatOpenAI
 import pandas as pd
+import requests
+from io import BytesIO
 
 sys.path.append("../")
 from src import TextReport
@@ -110,7 +113,7 @@ def extract_metadata_openAI(input_text):
     """
     prompt = PromptTemplate(template=template, input_variables=["raw_text"])
     llm_chain = LLMChain(
-        prompt=prompt, llm=OpenAIChat(model_name="gpt-3.5-turbo", temperature=0.01)
+        prompt=prompt, llm=ChatOpenAI(model_name="gpt-3.5-turbo", temperature=0.01)
     )
     results = llm_chain.run(input_text)
     json_string = process_output_json(results)
@@ -159,6 +162,7 @@ There is two different modes to extract data from the report:
 🚨 DISCLAIMER: If you choose OpenAI instead of private AI in tools options, some tools will use [OpenAI API](https://openai.com/). Data will be sent to OpenAI servers. If using OpenAI Model, do not upload private or non-anonymized data. As per their terms of service [OpenAI does not retain any data  (for more time than legal requirements, click for source) and do not use them for trainning.](https://openai.com/policies/api-data-usage-policies) However, we do not take any responsibility for any data leak.      
 """
 )
+default_file_url = "https://www.lbgi.fr/~meyer/IMPatienT/sample_demo_report.pdf"
 
 st.header("PDF or Text Input")
 col1, col2 = st.columns(2)
@@ -170,6 +174,12 @@ with col1:
         accept_multiple_files=False,
         key=st.session_state["id"],
     )
+    if st.button("Load Sample PDF"):
+        # Download the default file
+        response = requests.get(default_file_url)
+        # Convert the downloaded content into a file-like object
+        uploaded_file = BytesIO(response.content)
+
 with col2:
     input_text = st.text_area(
         "OR Write here your patient report or upload a PDF", key="input"

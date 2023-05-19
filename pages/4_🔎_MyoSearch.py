@@ -2,6 +2,8 @@ import streamlit as st
 from langchain.vectorstores import Chroma
 from streamlit.components.v1 import html
 from langchain.embeddings import HuggingFaceInstructEmbeddings
+import requests
+from io import BytesIO
 
 st.set_page_config(
     page_title="MyoSearch",

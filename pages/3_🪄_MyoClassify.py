@@ -7,9 +7,13 @@ from streamlit.components.v1 import html
 from langchain.embeddings import HuggingFaceInstructEmbeddings, OpenAIEmbeddings
 from dotenv import load_dotenv
 import openai
+import requests
+from io import BytesIO
 
 load_dotenv()
 openai.api_key = os.getenv("OPENAI_API_KEY")
+default_file_url = "https://www.lbgi.fr/~meyer/IMPatienT/sample_demo_report.pdf"
+
 
 sys.path.append("../")
 from src import TextReport
@@ -92,6 +96,12 @@ with col1:
         accept_multiple_files=False,
         key=st.session_state["id"],
     )
+    if st.button("Load Sample PDF"):
+        # Download the default file
+        response = requests.get(default_file_url)
+        # Convert the downloaded content into a file-like object
+        uploaded_file = BytesIO(response.content)
+
 with col2:
     input_text = st.text_area(
         "OR Write here your patient report or upload a PDF", key="input"
