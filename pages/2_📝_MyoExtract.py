@@ -4,7 +4,7 @@ import sys
 import json
 from streamlit.components.v1 import html
 from langchain import PromptTemplate, LLMChain
-from langchain.llms import llamacpp
+from langchain.llms import LlamaCpp
 from langchain.chat_models import ChatOpenAI
 import pandas as pd
 import requests
