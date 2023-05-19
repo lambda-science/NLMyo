@@ -6,6 +6,10 @@
   <img src="https://i.imgur.com/avfbQiE.png" alt="NLMyo Banner" style="border-radius: 25px;" />
 </p>
 
+<p align="center">
+  <img src="https://i.imgur.com/KlXFa9Q.png" alt="NLMyo Workflow" style="border-radius: 25px;" />
+</p>
+
 **NLMyo🔧: is a toolbox built to leverage the power of Large Language Models (LLMs) to exploit histology text reports.**  
 Available tools:
 
