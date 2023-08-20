@@ -25,6 +25,7 @@ class TextReport:
         self.text_as_list = []
         self.header_text = []
         self.results_match_dict = {}
+        self.image_stack = convert_from_bytes(self.file_obj.read())
 
     def get_grayscale(self, image):
         """Convert an image as numpy array to grayscale
@@ -50,7 +51,6 @@ class TextReport:
         Returns:
             str: raw text as a string
         """
-        self.image_stack = convert_from_bytes(self.file_obj.read())
         page_list = []
         # Loop on each image (page) of the PDF file
         for image in self.image_stack:
@@ -68,8 +68,7 @@ class TextReport:
         self.text_as_list = self.raw_text.split("\n")
         return self.raw_text
 
-    def pdf_censor(self, output_folder, mode="regex"):
-        self.image_stack = convert_from_bytes(self.file_obj.read())
+    def pdf_censor(self, output_folder, mode="regex", to_censor_list=None):
         censored_image_stack = []
         page_list = []
         new_filename = os.path.basename(self.file_obj.name) + "_censored.pdf"
@@ -91,6 +90,8 @@ class TextReport:
             )
             text_as_list = text_page.split("\n")
             biopsy_id, to_censor = self._regex_match(text_as_list)
+            if mode == "openAI":
+                to_censor.extend(to_censor_list)
             if biopsy_id is not None:
                 new_filename = biopsy_id.replace("/", "-") + "_" + self.file_obj.name
             list_bbox = self._get_bbox(image_data_table, to_censor)
